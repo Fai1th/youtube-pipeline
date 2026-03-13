@@ -1,0 +1,89 @@
+{
+  "pexelsApiKey": "YOUR_PEXELS_API_KEY",
+  "defaultPrivacy": "private",
+  "descriptionFooter": "\n\n---\nThis content is for educational and entertainment purposes only. All information is sourced from publicly available records.\n\nBackground music via YouTube Audio Library (free, no Content ID claims).",
+  "channels": {
+    "stoic": {
+      "name": "Ironmind",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/stoic/credentials.json",
+      "format": "longform",
+      "voiceId": "en-US-GuyNeural",
+      "tags": ["stoicism", "philosophy", "marcus aurelius", "seneca", "self improvement", "stoic wisdom", "daily wisdom"],
+      "category": "27",
+      "description": "Daily Stoic wisdom to help you live better. New video every day.",
+      "safetyNote": "Use only public domain Stoic translations (pre-1928). Paraphrase modern translations rather than quoting directly."
+    },
+    "darkhistory": {
+      "name": "The Black Ledger",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/darkhistory/credentials.json",
+      "format": "longform",
+      "voiceId": "en-US-GuyNeural",
+      "tags": ["dark history", "disturbing facts", "forgotten history", "true history", "history documentary"],
+      "category": "27",
+      "description": "The dark side of history they never taught you in school."
+    },
+    "psychfacts": {
+      "name": "Brain Glitch",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/psychfacts/credentials.json",
+      "format": "shorts",
+      "voiceId": "en-US-JennyNeural",
+      "tags": ["psychology facts", "human behavior", "brain facts", "psychology", "mind hacks"],
+      "category": "27",
+      "description": "Mind-blowing psychology facts in 60 seconds."
+    },
+    "sciexplained": {
+      "name": "Fission",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/sciexplained/credentials.json",
+      "format": "shorts",
+      "voiceId": "en-US-JennyNeural",
+      "tags": ["science explained", "science facts", "science shorts", "quick science", "learn science"],
+      "category": "28",
+      "description": "Complex science explained in 60 seconds or less."
+    },
+    "truecrime": {
+      "name": "Cold Files",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/truecrime/credentials.json",
+      "format": "longform",
+      "voiceId": "en-US-GuyNeural",
+      "tags": ["true crime", "cold case", "unsolved mysteries", "crime documentary", "criminal cases"],
+      "category": "25",
+      "description": "Gripping true crime stories. Cases that shook the world.",
+      "safetyNote": "ONLY cover solved cases with convicted perpetrators. No speculation on living unproven suspects."
+    },
+    "technews": {
+      "name": "The Stack",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/technews/credentials.json",
+      "format": "longform",
+      "voiceId": "en-US-DavisNeural",
+      "tags": ["AI news", "tech news", "technology", "artificial intelligence", "weekly tech"],
+      "category": "28",
+      "description": "Your weekly AI and tech news digest. Fast, sharp, informative."
+    },
+    "lifehacks": {
+      "name": "Unblocked",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/lifehacks/credentials.json",
+      "format": "shorts",
+      "voiceId": "en-US-JennyNeural",
+      "tags": ["life hacks", "productivity", "student tips", "study hacks", "self improvement"],
+      "category": "26",
+      "description": "Productivity hacks for students in 60 seconds. Level up your life."
+    },
+    "mythology": {
+      "name": "The Old Gods",
+      "youtubeChannelId": "",
+      "credentialsFile": "channels/mythology/credentials.json",
+      "format": "longform",
+      "voiceId": "en-US-GuyNeural",
+      "tags": ["mythology", "greek myths", "norse mythology", "ancient gods", "history", "greek mythology", "egyptian gods"],
+      "category": "27",
+      "description": "The myths of the ancient world — Greek, Norse, Egyptian, Aztec — and the real history and meaning behind them."
+    }
+  }
+}
