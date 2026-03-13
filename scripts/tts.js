@@ -223,6 +223,23 @@ function generateVoiceover(channelId, dryRun, callback) {
   var tempDir = ensureTempDir(channelId);
   var outputPath = path.join(tempDir, 'voice.mp3');
 
+  if (dryRun) {
+    // In dry-run, script may not be saved to disk — just report intent
+    console.log('[tts] DRY RUN — TTS not executed');
+    console.log('[tts] Would synthesize: voice=' + voiceId + ' → ' + outputPath);
+    var scriptText2;
+    try {
+      scriptText2 = loadScript(channelId);
+      var cleanPreview = cleanScriptForTTS(scriptText2);
+      console.log('[tts] Script preview (first 400 chars):');
+      console.log(cleanPreview.substring(0, 400) + (cleanPreview.length > 400 ? '...' : ''));
+    } catch (e) {
+      console.log('[tts] (script not on disk in dry-run — that is expected)');
+    }
+    callback(null, outputPath);
+    return;
+  }
+
   var scriptText;
   try {
     scriptText = loadScript(channelId);
@@ -233,15 +250,6 @@ function generateVoiceover(channelId, dryRun, callback) {
 
   var cleanText = cleanScriptForTTS(scriptText);
   console.log('[tts] Script length (chars): ' + cleanText.length);
-  console.log('[tts] Voice: ' + voiceId);
-
-  if (dryRun) {
-    console.log('[tts] DRY RUN — TTS not executed');
-    console.log('[tts] Clean script preview (first 500 chars):');
-    console.log(cleanText.substring(0, 500) + '...');
-    callback(null, outputPath);
-    return;
-  }
 
   runEdgeTTS(cleanText, voiceId, outputPath, function(err) {
     if (err) {

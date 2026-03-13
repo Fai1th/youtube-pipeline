@@ -126,7 +126,25 @@ function assembleVideo(channelId, dryRun, callback) {
   try {
     metadata = loadMetadata(channelId);
   } catch (err) {
-    callback(err); return;
+    if (dryRun) {
+      metadata = { title: 'dry_run_video', description: '' };
+    } else {
+      callback(err); return;
+    }
+  }
+
+  var safeTitle = (metadata.title || 'video').replace(/[^a-z0-9]/gi, '_').substring(0, 50);
+  var timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+  var outputPath = path.join(outputDir, safeTitle + '_' + timestamp + '.mp4');
+
+  if (dryRun) {
+    console.log('[assemble] DRY RUN — would build:');
+    console.log('  Resolution: ' + resolution);
+    console.log('  Audio: ' + audioPath);
+    console.log('  Output: ' + outputPath);
+    console.log('  Structure: 3s title card → footage loop → 5s outro');
+    callback(null, outputPath);
+    return;
   }
 
   var footageManifest;
@@ -144,20 +162,6 @@ function assembleVideo(channelId, dryRun, callback) {
   var clips = footageManifest.clips || [];
   if (clips.length === 0) {
     callback(new Error('No footage clips found. Run fetch-footage.js first.'));
-    return;
-  }
-
-  var safeTitle = metadata.title.replace(/[^a-z0-9]/gi, '_').substring(0, 50);
-  var timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
-  var outputPath = path.join(outputDir, safeTitle + '_' + timestamp + '.mp4');
-
-  if (dryRun) {
-    console.log('[assemble] DRY RUN — would build:');
-    console.log('  Resolution: ' + resolution);
-    console.log('  Clips: ' + clips.length);
-    console.log('  Audio: ' + audioPath);
-    console.log('  Output: ' + outputPath);
-    callback(null, outputPath);
     return;
   }
 

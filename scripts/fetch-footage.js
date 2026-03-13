@@ -240,7 +240,7 @@ function fetchFootage(channelId, dryRun, callback) {
   }
 
   var apiKey = config.pexelsApiKey;
-  if (!apiKey || apiKey === 'YOUR_PEXELS_API_KEY') {
+  if (!dryRun && (!apiKey || apiKey === 'YOUR_PEXELS_API_KEY')) {
     callback(new Error('Pexels API key not set in config.json. Get a free key at https://www.pexels.com/api/'));
     return;
   }
@@ -249,8 +249,13 @@ function fetchFootage(channelId, dryRun, callback) {
   try {
     metadata = loadMetadata(channelId);
   } catch (err) {
-    callback(err);
-    return;
+    if (dryRun) {
+      // In dry-run, metadata may not exist — use channel defaults
+      metadata = { keywords: channelConfig.tags || [] };
+    } else {
+      callback(err);
+      return;
+    }
   }
 
   var isShort = channelConfig.format === 'shorts';
